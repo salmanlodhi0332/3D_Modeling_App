@@ -1,20 +1,55 @@
 
 class MockData {
-  // static List<Map<String, String>> dummyDataAds = [
-  //   {
-  //     'image':
-  //         'https://smartyads.com/storage/uploads/2023/june/best-mobile-ad-networks.png'
-  //   },
-  //   {
-  //     'image':
-  //         'https://mobisoftinfotech.com/resources/wp-content/uploads/2018/08/Banner.png'
-  //   },
-  //   {
-  //     'image':
-  //         'https://www.zong.com.pk/uploads/upload_d1ac75fc6bb889e57882d44a458d142a.jpg'
-  //   },
-  // ];
 
+  static List<Map<String, String>> bgImages = [
+    {
+      'image':
+          'background1.jpg'
+    },
+    {
+      'image':
+          'background2.jpg'
+    },
+    {
+      'image':
+          'background3.jpg'
+    },
+    {
+      'image':
+          'background4.jpg'
+    },
+  ];
+
+static List<Map<String, String>> charactorList = [
+    {
+      'image':
+          'model1.glb'
+    },
+    // {
+    //   'image':
+    //       'model2.glb'
+    // },
+    {
+      'image':
+          'model3.glb'
+    },
+    {
+      'image':
+          'model4.glb'
+    },
+    {
+      'image':
+          'model5.glb'
+    },
+    // {
+    //   'image':
+    //       'background3.jpg'
+    // },
+    // {
+    //   'image':
+    //       'background4.jpg'
+    // },
+  ];
   // static List<MessageModel> dummyMassages = [
   //   MessageModel(
   //     id: 1,
