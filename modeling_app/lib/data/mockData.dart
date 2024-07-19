@@ -8,11 +8,11 @@ class MockData {
     },
     {
       'image':
-          'background2.jpg'
+          'background2.PNG'
     },
     {
       'image':
-          'background3.jpg'
+          'background3.PNG'
     },
     {
       'image':
