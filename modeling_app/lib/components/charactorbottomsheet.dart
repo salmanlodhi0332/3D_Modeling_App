@@ -99,7 +99,6 @@ class charactorBottomSheet extends StatelessWidget {
                         controllersProvider.Model.value =
                             MockData.charactorList[index]['image']!;
                       });
-
                       print(controllersProvider.Model.value);
                       // Navigator.pop(context);
                     },

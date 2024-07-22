@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modeling_app/MVC/view/3DviewerScreen.dart';
+import 'package:modeling_app/MVC/view/welcomeScreen.dart';
 import 'package:modeling_app/constant/theme.dart';
 import 'package:get/get.dart';
 import 'package:modeling_app/services/fcm_token.dart';
@@ -49,7 +50,7 @@ class _MyAppState extends State<MyApp> {
           home: child,
         );
       },
-      child: modelViewerScreen(),
+      child: welcomeScreen(),
     );
   }
 }

@@ -33,7 +33,23 @@ class modelViewerScreen extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   )
-                : Container()),
+                : Container(
+                    height: double.infinity,
+                    width: double.infinity,
+                    decoration: BoxDecoration(color: Colors.grey),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          bottom: 0,
+                          right: 10.sp,
+                          child: Image.asset(
+                            'assets/images/blankfloor.png',
+                            fit: BoxFit.fitWidth,
+                          ),
+                        )
+                      ],
+                    ),
+                  )),
             Obx(
               () => controllersProvider.Model.value == ''
                   ? Container()
@@ -98,7 +114,7 @@ class modelViewerScreen extends StatelessWidget {
                     radius: 25.sp,
                     backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                     child: Icon(
-                      Icons.image,
+                      Icons.person,
                       color: Colors.black,
                       size: 20.sp,
                     ),
