@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modeling_app/MVC/view/3DviewerScreen.dart';
+import 'package:modeling_app/MVC/view/homeScreen.dart';
 import 'package:modeling_app/constant/navigation.dart';
 import 'package:modeling_app/constant/theme.dart';
 import 'package:modeling_app/helper/getx_helper.dart';
@@ -19,7 +20,7 @@ class welcomeScreen extends StatelessWidget {
     return GetBuilder<ThemeHelper>(initState: (state) {
       Timer(Duration(seconds:5), () {
         Navigation.getInstance
-            .RightToLeft_PageNavigation(context, modelViewerScreen());
+            .RightToLeft_PageNavigation(context, homeScreen());
       });
     }, builder: (themecontroller) {
       return Scaffold(

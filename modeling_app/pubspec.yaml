@@ -66,6 +66,7 @@ dependencies:
   aws_sdk: ^0.0.3
   model_viewer_plus: ^1.6.1
   babylonjs_viewer: ^1.0.1
+  file_picker: ^8.0.5
   
   
 

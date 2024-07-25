@@ -64,7 +64,8 @@ class modelViewerScreen extends StatelessWidget {
                       src: 'assets/images/${controllersProvider.Model.value}',
                       alt: "A 3D model of an astronaut",
                       // loading:Loading.lazy ,
-                      ar: true,
+                      
+                      ar: false,
                       autoRotate: true,
                       cameraControls: true,
                     ),

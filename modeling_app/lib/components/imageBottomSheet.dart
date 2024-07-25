@@ -87,13 +87,17 @@ class ImageBottomSheet extends StatelessWidget {
               const SizedBox(height: 10),
               GridView.builder(
                 shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, mainAxisSpacing: 5),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.8,
+                    mainAxisSpacing: 20.sp,
+                    crossAxisSpacing: 20.sp),
                 itemCount: MockData.bgImages.length,
                 itemBuilder: (BuildContext context, int index) {
                   return SpringWidget(
                     onTap: () {
-                      controllersProvider.backgoundImage.value = MockData.bgImages[index]['image']!;
+                      controllersProvider.backgoundImage.value =
+                          MockData.bgImages[index]['image']!;
                       Navigator.pop(context);
                     },
                     child: ClipRRect(
