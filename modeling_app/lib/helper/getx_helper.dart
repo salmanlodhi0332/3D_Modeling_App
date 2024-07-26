@@ -53,35 +53,5 @@ class GetxControllersProvider extends GetxController {
     }
   }
 
-  
-  Future<String?> bankStatementUploader() async {
-    const int maxSizeInBytes = 5 * 1024 * 1024; // 5 MB in bytes
-
-    try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['pdf'],
-      );
-
-      if (result != null) {
-        PlatformFile file = result.files.first;
-
-        // Check the file size
-        if (file.size > maxSizeInBytes) {
-          Fluttertoast.showToast(
-              msg: 'The selected file exceeds the maximum size limit of 5 MB.');
-          print("The selected file exceeds the maximum size limit of 5 MB.");
-          return null;
-        }
-
-        return file.path;
-      } else {
-        // User canceled the picker
-        return null;
-      }
-    } catch (e) {
-      print("bankStatementUploader Error: $e");
-      return '';
-    }
-  }
+ 
 }

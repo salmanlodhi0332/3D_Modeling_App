@@ -37,7 +37,7 @@ class uploadModelScreen extends StatelessWidget {
             children: [
               SpringWidget(
                   onTap: () async {
-                    await controllersProvider.bankStatementUploader();
+                    await controllersProvider.uploadGLBFile();
                   },
                 child: Center(
                   child: Container(
