@@ -36,8 +36,8 @@ class uploadModelScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SpringWidget(
-                  onTap: () {
-                    
+                  onTap: () async {
+                    await controllersProvider.bankStatementUploader();
                   },
                 child: Center(
                   child: Container(

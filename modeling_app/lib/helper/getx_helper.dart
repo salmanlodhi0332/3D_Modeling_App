@@ -1,7 +1,11 @@
+import 'dart:io';
+
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
+// import 'package:filepicker_windows/filepicker_windows.dart';
 
 class GetxControllersProvider extends GetxController {
   RxString imagePath = ''.obs;
@@ -32,26 +36,52 @@ class GetxControllersProvider extends GetxController {
     }
   }
 
-  Future<void> pickAndUploadFile() async {
+  Future<void> uploadGLBFile() async {
     try {
-      final result = await FilePicker.platform.pickFiles();
-      if (result != null && result.files.isNotEmpty) {
-        final file = result.files.first;
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['glb'],
+      );
 
-        String? filePath = file.path;
-        String? fileName = file.name;
+      if (result != null) {
+        String file = File(result.files.single.path!).path;
 
-        if (filePath != null) {
-          print('File Name: $fileName');
-          print('File Path: $filePath');
-        } else {
-          print('No file selected');
-        }
-      } else {
-        print('User canceled the picker');
+        print('File Path: $file');
       }
     } catch (e) {
-      print('Error picking file: $e');
+      print('error while uploading 3D model: $e');
+    }
+  }
+
+  
+  Future<String?> bankStatementUploader() async {
+    const int maxSizeInBytes = 5 * 1024 * 1024; // 5 MB in bytes
+
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['pdf'],
+      );
+
+      if (result != null) {
+        PlatformFile file = result.files.first;
+
+        // Check the file size
+        if (file.size > maxSizeInBytes) {
+          Fluttertoast.showToast(
+              msg: 'The selected file exceeds the maximum size limit of 5 MB.');
+          print("The selected file exceeds the maximum size limit of 5 MB.");
+          return null;
+        }
+
+        return file.path;
+      } else {
+        // User canceled the picker
+        return null;
+      }
+    } catch (e) {
+      print("bankStatementUploader Error: $e");
+      return '';
     }
   }
 }

@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+// import 'package:flutter_3d_controller/flutter_3d_controller.dart';
 import 'package:modeling_app/components/charactorbottomsheet.dart';
 import 'package:modeling_app/components/imageBottomSheet.dart';
 import 'package:modeling_app/components/spring_widget.dart';
