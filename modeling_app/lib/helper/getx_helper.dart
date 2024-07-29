@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -12,6 +12,7 @@ class GetxControllersProvider extends GetxController {
   RxString backgoundImage = ''.obs;
   RxString Model = ''.obs;
   RxInt ModelIndex = 0.obs;
+  final FirebaseStorage _storage = FirebaseStorage.instance;
 
   var defaultImagePath = 'assets/images/default.jpg';
   Future getImage() async {
@@ -44,14 +45,41 @@ class GetxControllersProvider extends GetxController {
       );
 
       if (result != null) {
-        String file = File(result.files.single.path!).path;
-
+        PlatformFile file = result.files.first;
         print('File Path: $file');
+        // Create a reference to the file location
+        Reference ref = _storage.ref().child('3DModel/${file.name}');
+
+        // Upload the file
+        await ref.putFile(File(file.path!));
+        print('Upload complete');
       }
-    } catch (e) {
+    } on FirebaseException catch (e) {
       print('error while uploading 3D model: $e');
     }
   }
 
- 
+
+
+  Future<void> backgroundimage() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.image,
+        // allowedExtensions: ['glb'],
+      );
+
+      if (result != null) {
+        PlatformFile file = result.files.first;
+        print('File Path: $file');
+        // Create a reference to the file location
+        Reference ref = _storage.ref().child('backgroundImage/${file.name}');
+
+        // Upload the file
+        await ref.putFile(File(file.path!));
+        print('Upload complete');
+      }
+    } on FirebaseException catch (e) {
+      print('error while uploading 3D model: $e');
+    }
+  }
 }

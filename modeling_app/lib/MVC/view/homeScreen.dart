@@ -26,7 +26,8 @@ class homeScreen extends StatelessWidget {
           resizeToAvoidBottomInset: true,
           floatingActionButton: SpringWidget(
             onTap: () {
-              Navigation.getInstance.RightToLeft_PageNavigation(context, uploadModelScreen());
+              Navigation.getInstance
+                  .RightToLeft_PageNavigation(context, uploadModelScreen());
             },
             child: Container(
               height: 50.sp,
@@ -34,12 +35,20 @@ class homeScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   gradient: themecontroller.backgroundGradient,
                   borderRadius: BorderRadius.circular(20.sp)),
-              child: Center(child: Row(
+              child: Center(
+                  child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/images/3Dmodel.png',height: 25.sp,),
-                  SizedBox(width: 10.sp,),
-                  Text('Upload model',),
+                  Image.asset(
+                    'assets/images/3Dmodel.png',
+                    height: 25.sp,
+                  ),
+                  SizedBox(
+                    width: 10.sp,
+                  ),
+                  Text(
+                    'Upload model',
+                  ),
                 ],
               )),
             ),
@@ -69,8 +78,8 @@ class homeScreen extends StatelessWidget {
                     // var product = SearchPorductslist;
                     return GestureDetector(
                         onTap: () {
-                          // Navigation.getInstance.screenNavigation(context,
-                          //     ProductDetailScreen(productData: product[index]));
+                          Navigation.getInstance
+                              .screenNavigation(context, modelViewerScreen());
                         },
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(20.sp),

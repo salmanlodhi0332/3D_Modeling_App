@@ -1,32 +1,13 @@
 {
   "project_info": {
-    "project_number": "751803981686",
-    "project_id": "rotikapra-3c2e0",
-    "storage_bucket": "rotikapra-3c2e0.appspot.com"
+    "project_number": "985818505655",
+    "project_id": "d-model-app",
+    "storage_bucket": "d-model-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:751803981686:android:93c4681226906deb916457",
-        "android_client_info": {
-          "package_name": "com.example.home_krew_vandor_app"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBYpz39gy_ktOWish3gKN8aDUNfPLE6Tl8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:751803981686:android:cdc2320f64708e6b916457",
+        "mobilesdk_app_id": "1:985818505655:android:d6e5a38ee12d7d39aac832",
         "android_client_info": {
           "package_name": "com.example.modeling_app"
         }
@@ -34,26 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBYpz39gy_ktOWish3gKN8aDUNfPLE6Tl8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:751803981686:android:fc1913561f4e7a3d916457",
-        "android_client_info": {
-          "package_name": "com.example.roti_kapra_app"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBYpz39gy_ktOWish3gKN8aDUNfPLE6Tl8"
+          "current_key": "AIzaSyCpdWFcQTwam24QNHladWSqtM6dp6t-wa0"
         }
       ],
       "services": {

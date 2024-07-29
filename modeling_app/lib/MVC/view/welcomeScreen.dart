@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:modeling_app/MVC/view/3DviewerScreen.dart';
 import 'package:modeling_app/MVC/view/homeScreen.dart';
@@ -18,7 +19,9 @@ class welcomeScreen extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return GetBuilder<ThemeHelper>(initState: (state) {
-      Timer(Duration(seconds:5), () {
+      FlutterNativeSplash.remove();
+
+      Timer(Duration(seconds: 5), () {
         Navigation.getInstance
             .RightToLeft_PageNavigation(context, homeScreen());
       });

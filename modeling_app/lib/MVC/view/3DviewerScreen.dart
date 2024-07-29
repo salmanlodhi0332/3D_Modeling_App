@@ -47,9 +47,9 @@ class modelViewerScreen extends StatelessWidget {
                       ],
                     ),
                   )),
-            Obx(
-              () => controllersProvider.Model.value == ''
-                  ? Container()
+            // Obx(
+            //   () => controllersProvider.Model.value == ''
+            //       ? Container()
                   // ModelViewer(
                   //     src: 'assets/images/model3.glb',
                   //     alt: "A 3D model of an astronaut",
@@ -57,16 +57,20 @@ class modelViewerScreen extends StatelessWidget {
                   //     autoRotate: true,
                   //     cameraControls: true,
                   //   )
-                  : ModelViewer(
-                      src: 'assets/images/${controllersProvider.Model.value}',
+                  // :
+                   ModelViewer(
+                      src:
+                          "https://firebasestorage.googleapis.com/v0/b/d-model-app.appspot.com/o/3DModel%2Fmodel4.glb?alt=media&token=d3db6322-8c83-4348-9f12-88ec028778b6"
+                      // 'assets/images/${controllersProvider.Model.value}'
+                      ,
                       alt: "A 3D model of an astronaut",
                       // loading:Loading.lazy ,
-                      
+
                       ar: false,
                       autoRotate: true,
                       cameraControls: true,
                     ),
-            ),
+            // ),
             Positioned(
                 top: 30.sp,
                 right: 20.sp,
