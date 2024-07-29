@@ -24,27 +24,6 @@ class Navigation {
   //   );
   // }
 
-  // RightToLeft_PageNavigation(BuildContext context, Widget childwidget) {
-  //   return Navigator.push(
-  //     context,
-  //     PageTransition(
-  //       type: PageTransitionType.rightToLeftWithFade,
-  //       child: childwidget,
-  //       isIos: false,
-  //       duration: Duration(milliseconds: 500),
-  //       reverseDuration: Duration(milliseconds: 400),
-  //     ),
-  //   );
-  // }
-
-  screenNavigation(BuildContext context, Widget childwidget) {
-    return Navigator.push(
-        context,
-        Platform.isAndroid
-            ? MaterialPageRoute(builder: (context) => childwidget)
-            : CupertinoPageRoute(builder: (context) => childwidget));
-  }
-
   RightToLeft_PageNavigation(BuildContext context, Widget childwidget) {
     return Navigator.push(
       context,
@@ -58,19 +37,13 @@ class Navigation {
     );
   }
 
-bottomToTop_PageNavigation(BuildContext context, Widget childwidget) {
+  screenNavigation(BuildContext context, Widget childwidget) {
     return Navigator.push(
-      context,
-      PageTransition(
-        type: PageTransitionType.bottomToTop,
-        child: childwidget,
-        isIos: false,
-        duration: Duration(milliseconds: 200),
-        reverseDuration: Duration(milliseconds: 200),
-      ),
-    );
+        context,
+        Platform.isAndroid
+            ? MaterialPageRoute(builder: (context) => childwidget)
+            : CupertinoPageRoute(builder: (context) => childwidget));
   }
-
 
   void pagePushAndReplaceNavigation(BuildContext context, Widget childWidget) {
     if (Platform.isAndroid) {
@@ -90,6 +63,20 @@ bottomToTop_PageNavigation(BuildContext context, Widget childwidget) {
         (route) => false,
       );
     }
+  }
+
+  screenNavigationfromrightToLeft(BuildContext context, Widget childwidget) {
+    return Navigator.push(
+        context,
+        Platform.isAndroid
+            ? PageTransition(
+                type: PageTransitionType.rightToLeft,
+                child: childwidget,
+                isIos: true,
+                duration: Duration(milliseconds: 200),
+                reverseDuration: Duration(milliseconds: 200),
+              )
+            : CupertinoPageRoute(builder: (context) => childwidget));
   }
 
   // void Page_PushAndReplaceNavigation(BuildContext context, Widget childWidget) {

@@ -39,8 +39,8 @@ class GetxControllersProvider extends GetxController {
   Future<void> uploadGLBFile() async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['glb'],
+        type: FileType.any,
+        // allowedExtensions: ['glb'],
       );
 
       if (result != null) {

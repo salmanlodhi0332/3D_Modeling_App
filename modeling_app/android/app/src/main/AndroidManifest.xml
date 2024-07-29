@@ -1,12 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-	     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	 
          <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="Arry driver App"
+        android:label="Paisaa loan"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true">
-
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -35,6 +33,6 @@
             android:value="2" />
         <meta-data 
             android:name="com.google.android.geo.API_KEY" 
-            android:value="AIzaSyAcC8RkFxv3vKg0mEXtqSrZnL32imnLm30"/> 
+            android:value="AIzaSyDiJo02OZXQiW6qh3Vp1vGEUsHGsFpjKdg"/> 
     </application>
 </manifest>

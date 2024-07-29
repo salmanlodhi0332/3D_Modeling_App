@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modeling_app/MVC/view/welcomeScreen.dart';
+import 'package:modeling_app/components/BottomNav.dart';
 import 'package:modeling_app/constant/theme.dart';
 import 'package:get/get.dart';
-import 'package:modeling_app/services/fcm_token.dart';
 import 'constant/constants.dart';
 import 'helper/data_storage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  DataStroge.getInstance.initiateSession();
-  FirebaseDB.init();
+  // DataStroge.getInstance.initiateSession();
+  // await FirebaseDB.init();
   loadConfig();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

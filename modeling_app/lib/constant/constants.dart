@@ -1,17 +1,25 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 class Constants {
-  static const double screenPadding = 10;
-  static const String currency = '\$';
+  static const double screenPadding = 20;
+  static const String currency = '৳';
   static var API_HOST = "";
-  static const String mapApiKey = "AIzaSyAcC8RkFxv3vKg0mEXtqSrZnL32imnLm30";
 
-  static final String PlaceApi ='https://maps.googleapis.com/maps/api/place/autocomplete/json';
-
-  //----DRIVER APP API'S
-  static final DriverRegister = "$API_HOST/driver/register";
-  static final DriverCheckOtp = "$API_HOST/driver/check-otp";
-  static final resendOtp_driver = "$API_HOST/driver/resend-otp";
-  static final driver_login = "$API_HOST/driver/login";
-  static final driver_forgot_password = "$API_HOST/driver/forgot-password";
+  static final PostRegister = "$API_HOST/user/register";
+  static final PostLogin = "$API_HOST/user/phone-login";
+  static final verifyotp = "$API_HOST/user/verify-otp";
+  static final resendotp = "$API_HOST/user/resend-otp";
+  static final saveFcmToken = "$API_HOST/user/save-fcm-token";
+  static final addUserDetails = "$API_HOST/user-details";
+  static final BankApi = "$API_HOST/bank";
+  static final GetBankApi = "$API_HOST/bank/my";
+  static final loanApi = "$API_HOST/loan";
+  static final GetloanApi = "$API_HOST/loan/my";
+  static final NIC_Sendotp = "$API_HOST/user-details/kyc/generate-otp";
+  static final NIC_Verifyotp = "$API_HOST/user-details/kyc/verify-otp";
+  static final NotificationApi = "$API_HOST/notification";
+  static final communicationApi = "$API_HOST/communication";
+  static final GetProfileApi = "$API_HOST/user/profile";
+  static final GetSettingApi = "$API_HOST/setting";
+  static final EditprofileApi = "$API_HOST/user/update-profile";
+  static final payinstallmentsApi = "$API_HOST/loan/pay/";
+  
 }

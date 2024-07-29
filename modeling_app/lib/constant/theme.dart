@@ -9,9 +9,8 @@ class ThemeHelper extends GetxController {
   static const colortoast = const Color(0xFFf7746c);
   static const colortoasttext = const Color(0xffffffff);
 
-  final colorPrimary = HexColor('#E65C19');
-  final colorPrimaryBlue = HexColor('#002252');
-
+  final colorPrimary = HexColor('#F79005');
+  // HexColor('#028cef');
   final greenheadingColor = HexColor('#14ae5c');
   final colorCanvas = const Color(0xFFfecdca);
 
@@ -148,19 +147,25 @@ class ThemeHelper extends GetxController {
 
   final backgroundGradient = const LinearGradient(
     colors: [
-      Color(
-          0xFFFFD700), // Yellow (0xFFFFD700 is the hexadecimal ARGB value for yellow)
-      Color(
-          0xFFFFA200), // Orange (0xFFFFA500 is the hexadecimal ARGB value for orange)
+      Color.fromARGB(255, 248, 94, 86),
+      Color.fromARGB(255, 242, 96, 89),
+
+      Color.fromARGB(255, 243, 100, 95),
+      Color.fromARGB(255, 248, 105, 110),
+      // Color.fromARGB(255, 250, 103, 96),
+      // Color.fromARGB(255, 255, 123, 116),
+      // Color(0xFFf7746c),
+      // Color.fromARGB(255, 250, 125, 119),
     ],
     stops: [
-      0.0, // Yellow starts at the beginning
-      13.0, // Orange reaches full intensity towards the end
+      0.5,
+      0.4,
+      0.6,
+      0.9,
     ],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
-
   SystemUiOverlayStyle get systemUiOverlayStyleMain => SystemUiOverlayStyle(
         statusBarColor: Color(0xffffffff),
         systemNavigationBarColor: Color(0xffffffff),
@@ -195,7 +200,8 @@ class ThemeHelper extends GetxController {
 
   SystemUiOverlayStyle get systemUiOverlayStyleForPrimary =>
       SystemUiOverlayStyle(
-        statusBarColor: Color(0xff85a4e7),
+        statusBarColor: Colors.transparent,
+        // HexColor('#F79005'),
         systemNavigationBarColor: Color(0xffffffff),
         statusBarIconBrightness:
             isDarkTheme.value ? Brightness.light : Brightness.dark,

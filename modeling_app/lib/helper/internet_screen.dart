@@ -2,7 +2,7 @@
 // import 'package:flutter/services.dart';
 // import 'package:modeling_app/constant/theme.dart';
 // import 'package:get/get.dart';
-// // import 'package:lottie/lottie.dart';
+// import 'package:lottie/lottie.dart';
 
 // class NoInternetScreen extends StatelessWidget {
 //   const NoInternetScreen({super.key, this.onTap});

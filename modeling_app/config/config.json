@@ -1,4 +1,4 @@
 {
     "app_name": "Foodeo",
-    "api_host": "http://3.134.130.169:3119/api"
+    "api_host": "https://server.paisaaloan.com/api"
 }
