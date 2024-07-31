@@ -18,6 +18,22 @@ class MockData {
       'image':
           'background4.jpg'
     },
+    {
+      'image':
+          'background1.jpg'
+    },
+    {
+      'image':
+          'background2.PNG'
+    },
+    {
+      'image':
+          'background3.PNG'
+    },
+    {
+      'image':
+          'background4.jpg'
+    },
   ];
 
 static List<Map<String, String>> charactorList = [
