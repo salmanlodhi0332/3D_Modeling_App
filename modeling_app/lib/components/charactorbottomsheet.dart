@@ -7,7 +7,7 @@ import 'package:modeling_app/components/spring_widget.dart';
 import 'package:modeling_app/constant/constants.dart';
 import 'package:modeling_app/constant/theme.dart';
 import 'package:modeling_app/data/mockData.dart';
-import 'package:modeling_app/helper/getx_helper.dart';
+import 'package:modeling_app/MVC/controller/maincontroller.dart';
 import 'package:get/get.dart';
 
 class charactorBottomSheet extends StatelessWidget {
@@ -35,7 +35,7 @@ class charactorBottomSheet extends StatelessWidget {
     );
   }
 
-  final controllersProvider = Get.put(GetxControllersProvider());
+  final controllersProvider = Get.put(mainController());
   Widget build(BuildContext context) {
     return GetBuilder<ThemeHelper>(builder: (themecontroller) {
       return Container(

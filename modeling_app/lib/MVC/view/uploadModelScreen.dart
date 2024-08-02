@@ -9,7 +9,7 @@ import 'package:modeling_app/components/spring_widget.dart';
 import 'package:modeling_app/constant/constants.dart';
 import 'package:modeling_app/constant/navigation.dart';
 import 'package:modeling_app/constant/theme.dart';
-import 'package:modeling_app/helper/getx_helper.dart';
+import 'package:modeling_app/MVC/controller/maincontroller.dart';
 
 class uploadModelScreen extends StatelessWidget {
   uploadModelScreen({
@@ -17,7 +17,7 @@ class uploadModelScreen extends StatelessWidget {
   });
 
   @override
-  final controllersProvider = Get.put(GetxControllersProvider());
+  final controllersProvider = Get.put(mainController());
 
   Widget build(BuildContext context) {
     return GetBuilder<ThemeHelper>(builder: (themecontroller) {

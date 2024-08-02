@@ -4,10 +4,11 @@ import 'package:get/get.dart';
 // import 'package:flutter_3d_controller/flutter_3d_controller.dart';
 import 'package:modeling_app/components/charactorbottomsheet.dart';
 import 'package:modeling_app/components/imageBottomSheet.dart';
+import 'package:modeling_app/components/image_widget.dart';
 import 'package:modeling_app/components/spring_widget.dart';
 import 'package:modeling_app/constant/theme.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:modeling_app/helper/getx_helper.dart';
+import 'package:modeling_app/MVC/controller/maincontroller.dart';
 
 class modelViewerScreen extends StatelessWidget {
   modelViewerScreen({
@@ -15,19 +16,21 @@ class modelViewerScreen extends StatelessWidget {
   });
 
   @override
-  final controllersProvider = Get.put(GetxControllersProvider());
+  final controllersProvider = Get.put(mainController());
 
   Widget build(BuildContext context) {
-    return GetBuilder<ThemeHelper>(builder: (themecontroller) {
+    return GetBuilder<ThemeHelper>(initState: (state) async {
+      await controllersProvider.GetAllbackground();
+    }, builder: (themecontroller) {
       return Scaffold(
         resizeToAvoidBottomInset: true,
         body: Stack(
           children: [
             Obx(() => controllersProvider.backgoundImage.value != ''
                 ? Positioned.fill(
-                    child: Image.asset(
-                      'assets/images/${controllersProvider.backgoundImage.value}', // Replace with your background image path
-                      fit: BoxFit.cover,
+                    child: ImageWidget(
+                      imageUrl: controllersProvider.backgoundImage.value,
+                      boxfit: BoxFit.cover,
                     ),
                   )
                 : Container(
@@ -60,7 +63,7 @@ class modelViewerScreen extends StatelessWidget {
             // :
             ModelViewer(
               src:
-                  "https://firebasestorage.googleapis.com/v0/b/d-model-app.appspot.com/o/3DModel%2Fmodel4.glb?alt=media&token=d3db6322-8c83-4348-9f12-88ec028778b6"
+                  "https://firebasestorage.googleapis.com/v0/b/d-model-app.appspot.com/o/3DModel%2Fmodel1.glb?alt=media&token=9ea69cbb-6da4-4767-b481-d1b977f39fb8"
               // 'assets/images/${controllersProvider.Model.value}'
               ,
               alt: "A 3D model of an astronaut",

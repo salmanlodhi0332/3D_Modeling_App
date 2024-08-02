@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:modeling_app/components/image_widget.dart';
+import 'package:modeling_app/components/round_button.dart';
 import 'package:modeling_app/components/spring_widget.dart';
 import 'package:modeling_app/constant/constants.dart';
 import 'package:modeling_app/constant/theme.dart';
 import 'package:modeling_app/data/mockData.dart';
-import 'package:modeling_app/helper/getx_helper.dart';
+import 'package:modeling_app/MVC/controller/maincontroller.dart';
 import 'package:get/get.dart';
 
 class ImageBottomSheet extends StatelessWidget {
@@ -35,11 +37,11 @@ class ImageBottomSheet extends StatelessWidget {
     );
   }
 
-  final controllersProvider = Get.put(GetxControllersProvider());
+  final controllersProvider = Get.put(mainController());
   Widget build(BuildContext context) {
     return GetBuilder<ThemeHelper>(builder: (themecontroller) {
       return Container(
-        height: 500.sp,
+        height: 585.sp,
         decoration: BoxDecoration(
             // gradient: themecontroller.containerGradient,
             color: themecontroller.colorwhite,
@@ -86,7 +88,17 @@ class ImageBottomSheet extends StatelessWidget {
                       ))
                 ],
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 20.sp),
+              RoundButton(
+                height: 40.sp,
+                title: 'upload new background',
+                onTap: () {
+
+                  controllersProvider.backgroundimage();
+                },
+                gradient: true,
+              ),
+              SizedBox(height: 20.sp),
               Expanded(
                 child: GridView.builder(
                   shrinkWrap: true,
@@ -97,21 +109,19 @@ class ImageBottomSheet extends StatelessWidget {
                       childAspectRatio: 0.8,
                       mainAxisSpacing: 10.sp,
                       crossAxisSpacing: 10.sp),
-                  itemCount: MockData.bgImages.length,
+                  itemCount: controllersProvider.backgroundList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
                         controllersProvider.backgoundImage.value =
-                            MockData.bgImages[index]['image']!;
+                            controllersProvider.backgroundList[index];
                         Navigator.pop(context);
                       },
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.sp),
-                        child: Image.asset(
-                          'assets/images/${MockData.bgImages[index]['image']}', // Replace with your background image path
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                          borderRadius: BorderRadius.circular(20.sp),
+                          child: ImageWidget(
+                              imageUrl:
+                                  controllersProvider.backgroundList[index])),
                     );
                   },
                 ),
