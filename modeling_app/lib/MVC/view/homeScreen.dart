@@ -11,6 +11,7 @@ import 'package:modeling_app/constant/constants.dart';
 import 'package:modeling_app/constant/navigation.dart';
 import 'package:modeling_app/constant/theme.dart';
 import 'package:modeling_app/MVC/controller/maincontroller.dart';
+import 'package:modeling_app/data/mockData.dart';
 
 class homeScreen extends StatelessWidget {
   homeScreen({
@@ -73,19 +74,28 @@ class homeScreen extends StatelessWidget {
                       childAspectRatio: 0.8,
                       mainAxisSpacing: 20.sp,
                       crossAxisSpacing: 20.sp),
-                  itemCount: 10,
+                  itemCount: MockData.characterImages.length,
                   itemBuilder: (BuildContext context, int index) {
                     // var product = SearchPorductslist;
                     return GestureDetector(
                         onTap: () {
-                          Navigation.getInstance
-                              .screenNavigation(context, modelViewerScreen());
+                          Navigation.getInstance.screenNavigation(
+                              context,
+                              modelViewerScreen(
+                                Model: MockData.characterImages[index]['model']
+                                    .toString(),
+                              ));
                         },
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20.sp),
-                            child: ImageWidget(
-                                imageUrl:
-                                    'https://img.freepik.com/free-photo/3d-rendering-cartoon-like-worried-woman_23-2150797686.jpg?t=st=1721925169~exp=1721928769~hmac=cf0dc94b1aa0a4970dd0d38318278412b6dec812ee3af38b207db921d33754e3&w=740')));
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20.sp)),
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20.sp),
+                              child: ImageWidget(
+                                  imageUrl: MockData.characterImages[index]
+                                          ['image']
+                                      .toString())),
+                        ));
                   },
                 ),
               )));

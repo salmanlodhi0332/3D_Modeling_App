@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:modeling_app/components/image_widget.dart';
 import 'package:modeling_app/components/round_button.dart';
 import 'package:modeling_app/components/spring_widget.dart';
@@ -23,7 +24,6 @@ class ImageBottomSheet extends StatelessWidget {
   /// foraddons = false for normal uploading
   static Future show(BuildContext context) {
     final themecontroller = Get.put(ThemeHelper());
-
     return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -38,6 +38,8 @@ class ImageBottomSheet extends StatelessWidget {
   }
 
   final controllersProvider = Get.put(mainController());
+  RxBool uploadLoading = false.obs;
+
   Widget build(BuildContext context) {
     return GetBuilder<ThemeHelper>(builder: (themecontroller) {
       return Container(
@@ -89,41 +91,56 @@ class ImageBottomSheet extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20.sp),
-              RoundButton(
-                height: 40.sp,
-                title: 'upload new background',
-                onTap: () {
-
-                  controllersProvider.backgroundimage();
-                },
-                gradient: true,
+              Obx(
+                () => RoundButton(
+                  height: 40.sp,
+                  title: 'upload new background',
+                  disabled: uploadLoading.value,
+                  loading: uploadLoading.value,
+                  onTap: () async {
+                    uploadLoading.value = true;
+                    await controllersProvider.backgroundimage();
+                    uploadLoading.value = false;
+                  },
+                  gradient: true,
+                ),
               ),
               SizedBox(height: 20.sp),
               Expanded(
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  primary: true,
-                  scrollDirection: Axis.vertical,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.8,
-                      mainAxisSpacing: 10.sp,
-                      crossAxisSpacing: 10.sp),
-                  itemCount: controllersProvider.backgroundList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        controllersProvider.backgoundImage.value =
-                            controllersProvider.backgroundList[index];
-                        Navigator.pop(context);
-                      },
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20.sp),
-                          child: ImageWidget(
-                              imageUrl:
-                                  controllersProvider.backgroundList[index])),
-                    );
-                  },
+                child: Obx(
+                  () => controllersProvider.backgroundList.isEmpty
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Center(child: Text('No Background Image is added'))
+                          ],
+                        )
+                      : GridView.builder(
+                          shrinkWrap: true,
+                          primary: true,
+                          scrollDirection: Axis.vertical,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 0.8,
+                                  mainAxisSpacing: 10.sp,
+                                  crossAxisSpacing: 10.sp),
+                          itemCount: controllersProvider.backgroundList.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return GestureDetector(
+                              onTap: () {
+                                controllersProvider.backgoundImage.value =
+                                    controllersProvider.backgroundList[index];
+                                Navigator.pop(context);
+                              },
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.sp),
+                                  child: ImageWidget(
+                                      imageUrl: controllersProvider
+                                          .backgroundList[index])),
+                            );
+                          },
+                        ),
                 ),
               ),
             ],

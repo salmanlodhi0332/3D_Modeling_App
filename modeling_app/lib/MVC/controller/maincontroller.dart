@@ -63,9 +63,9 @@ class mainController extends GetxController {
 
   Future<void> backgroundimage() async {
     try {
+      
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.image,
-        // allowedExtensions: ['glb'],
       );
 
       if (result != null) {
@@ -79,7 +79,6 @@ class mainController extends GetxController {
       print('error while uploading 3D model: $e');
     }
   }
-
 
   Future<void> GetAllbackground() async {
     try {
@@ -98,12 +97,9 @@ class mainController extends GetxController {
     }
   }
 
-
-
   Future<void> GetAll3Dmodel() async {
     try {
-      Reference folderRef =
-          FirebaseStorage.instance.ref().child('3DModel');
+      Reference folderRef = FirebaseStorage.instance.ref().child('3DModel');
 
       ListResult result = await folderRef.list();
       backgroundList.clear();
