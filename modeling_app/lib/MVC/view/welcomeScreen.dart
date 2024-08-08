@@ -8,7 +8,7 @@ import 'package:modeling_app/MVC/view/homeScreen.dart';
 import 'package:modeling_app/constant/navigation.dart';
 import 'package:modeling_app/constant/theme.dart';
 import 'package:modeling_app/MVC/controller/maincontroller.dart';
-// import 'package:permission_handler/permission_handler.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class welcomeScreen extends StatelessWidget {
   welcomeScreen({
@@ -18,24 +18,24 @@ class welcomeScreen extends StatelessWidget {
   @override
   final controllersProvider = Get.put(mainController());
 
-  // Future<void> requestPermissions() async {
-  //   while (true) {
-  //     final status = await Permission.storage.request();
-  //     if (status.isGranted) {
-  //       print('Permission granted');
-  //       break;
-  //     } else if (status.isDenied) {
-  //       print('Permission denied, retrying...');
-  //       await Future.delayed(
-  //           Duration(seconds: 2)); // Optional delay before retrying
-  //     } else if (status.isPermanentlyDenied) {
-  //       print(
-  //           'Permission permanently denied. Please open settings to grant permission.');
-  //       // Optionally, show an alert dialog here to inform the user.
-  //       break;
-  //     }
-  //   }
-  // }
+  Future<void> requestPermissions() async {
+    while (true) {
+      final status = await Permission.storage.request();
+      if (status.isGranted) {
+        print('Permission granted');
+        break;
+      } else if (status.isDenied) {
+        print('Permission denied, retrying...');
+        await Future.delayed(
+            Duration(seconds: 2)); // Optional delay before retrying
+      } else if (status.isPermanentlyDenied) {
+        print(
+            'Permission permanently denied. Please open settings to grant permission.');
+        // Optionally, show an alert dialog here to inform the user.
+        break;
+      }
+    }
+  }
 
   Widget build(BuildContext context) {
     return GetBuilder<ThemeHelper>(initState: (state) async {

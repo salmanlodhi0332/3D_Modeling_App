@@ -49,7 +49,10 @@ class uploadModelScreen extends StatelessWidget {
                       ),
                       child: Obx(
                         () => controllersProvider.uploadingModel.value
-                            ? CircularProgressIndicator()
+                            ? SizedBox(
+                                height: 50.sp,
+                                width: 50.sp,
+                                child: CircularProgressIndicator())
                             : Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
