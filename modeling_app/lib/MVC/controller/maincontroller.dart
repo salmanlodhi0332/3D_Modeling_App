@@ -12,6 +12,9 @@ class mainController extends GetxController {
   RxString backgoundImage = ''.obs;
   RxString Model = ''.obs;
   RxInt ModelIndex = 0.obs;
+  RxBool loadingbackground = false.obs;
+  RxBool uploadingModel = false.obs;
+
   RxList<String> backgroundList = <String>[].obs;
 
   final FirebaseStorage _storage = FirebaseStorage.instance;
@@ -49,21 +52,25 @@ class mainController extends GetxController {
       if (result != null) {
         PlatformFile file = result.files.first;
         print('File Path: $file');
-        // Create a reference to the file location
-        Reference ref = _storage.ref().child('3DModel/${file.name}');
+        if (file.extension == 'glb') {
+          uploadingModel.value = true;
+          Reference ref = _storage.ref().child('3DModel/${file.name}');
 
-        // Upload the file
-        await ref.putFile(File(file.path!));
-        print('Upload complete');
+          await ref.putFile(File(file.path!));
+          print('Upload complete');
+          uploadingModel.value = false;
+        } else {
+          Fluttertoast.showToast(msg: 'only .glb files are allowed');
+        }
       }
     } on FirebaseException catch (e) {
       print('error while uploading 3D model: $e');
+      uploadingModel.value = false;
     }
   }
 
   Future<void> backgroundimage() async {
     try {
-      
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.image,
       );
@@ -82,6 +89,7 @@ class mainController extends GetxController {
 
   Future<void> GetAllbackground() async {
     try {
+      loadingbackground.value = true;
       Reference folderRef =
           FirebaseStorage.instance.ref().child('backgroundImage');
 
@@ -92,8 +100,10 @@ class mainController extends GetxController {
         print('File URL: $fileUrl');
         backgroundList.add(fileUrl);
       }
+      loadingbackground.value = false;
     } on FirebaseException catch (e) {
       print('Error while listing images: $e');
+      loadingbackground.value = false;
     }
   }
 

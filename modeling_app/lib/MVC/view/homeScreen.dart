@@ -88,6 +88,7 @@ class homeScreen extends StatelessWidget {
                         },
                         child: Container(
                           decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 100, 100, 100),
                               borderRadius: BorderRadius.circular(20.sp)),
                           child: ClipRRect(
                               borderRadius: BorderRadius.circular(20.sp),

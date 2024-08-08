@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:modeling_app/components/image_widget.dart';
 import 'package:modeling_app/components/round_button.dart';
+import 'package:modeling_app/components/small_loader.dart';
 import 'package:modeling_app/components/spring_widget.dart';
 import 'package:modeling_app/constant/constants.dart';
 import 'package:modeling_app/constant/theme.dart';
@@ -101,6 +102,7 @@ class ImageBottomSheet extends StatelessWidget {
                     uploadLoading.value = true;
                     await controllersProvider.backgroundimage();
                     uploadLoading.value = false;
+                    await controllersProvider.GetAllbackground();
                   },
                   gradient: true,
                 ),
@@ -108,39 +110,45 @@ class ImageBottomSheet extends StatelessWidget {
               SizedBox(height: 20.sp),
               Expanded(
                 child: Obx(
-                  () => controllersProvider.backgroundList.isEmpty
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Center(child: Text('No Background Image is added'))
-                          ],
-                        )
-                      : GridView.builder(
-                          shrinkWrap: true,
-                          primary: true,
-                          scrollDirection: Axis.vertical,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio: 0.8,
-                                  mainAxisSpacing: 10.sp,
-                                  crossAxisSpacing: 10.sp),
-                          itemCount: controllersProvider.backgroundList.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return GestureDetector(
-                              onTap: () {
-                                controllersProvider.backgoundImage.value =
-                                    controllersProvider.backgroundList[index];
-                                Navigator.pop(context);
+                  () => controllersProvider.loadingbackground.value
+                      ? SmallLoader()
+                      : controllersProvider.backgroundList.isEmpty
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Center(
+                                    child: Text('No Background Image is added'))
+                              ],
+                            )
+                          : GridView.builder(
+                              shrinkWrap: true,
+                              primary: true,
+                              scrollDirection: Axis.vertical,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      childAspectRatio: 0.8,
+                                      mainAxisSpacing: 10.sp,
+                                      crossAxisSpacing: 10.sp),
+                              itemCount:
+                                  controllersProvider.backgroundList.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    controllersProvider.backgoundImage.value =
+                                        controllersProvider
+                                            .backgroundList[index];
+                                    Navigator.pop(context);
+                                  },
+                                  child: ClipRRect(
+                                      borderRadius:
+                                          BorderRadius.circular(20.sp),
+                                      child: ImageWidget(
+                                          imageUrl: controllersProvider
+                                              .backgroundList[index])),
+                                );
                               },
-                              child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.sp),
-                                  child: ImageWidget(
-                                      imageUrl: controllersProvider
-                                          .backgroundList[index])),
-                            );
-                          },
-                        ),
+                            ),
                 ),
               ),
             ],

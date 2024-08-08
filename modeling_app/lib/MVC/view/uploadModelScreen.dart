@@ -36,9 +36,9 @@ class uploadModelScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SpringWidget(
-                  onTap: () async {
-                    await controllersProvider.uploadGLBFile();
-                  },
+                onTap: () async {
+                  await controllersProvider.uploadGLBFile();
+                },
                 child: Center(
                   child: Container(
                       height: 300.sp,
@@ -47,16 +47,24 @@ class uploadModelScreen extends StatelessWidget {
                         color: Colors.grey.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(30.sp),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.upload_file_outlined,
-                            size: 40.sp,
-                            color: Colors.white.withOpacity(0.5),
-                          ),
-                          Text('Upload 3D model',style: TextStyle(color: Colors.white.withOpacity(0.5)),)
-                        ],
+                      child: Obx(
+                        () => controllersProvider.uploadingModel.value
+                            ? CircularProgressIndicator()
+                            : Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.upload_file_outlined,
+                                    size: 40.sp,
+                                    color: Colors.white.withOpacity(0.5),
+                                  ),
+                                  Text(
+                                    'Upload 3D model',
+                                    style: TextStyle(
+                                        color: Colors.white.withOpacity(0.5)),
+                                  )
+                                ],
+                              ),
                       )),
                 ),
               )

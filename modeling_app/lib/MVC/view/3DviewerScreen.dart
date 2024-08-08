@@ -2,6 +2,7 @@ import 'dart:typed_data';
 // import 'package:capture_and_share/capture_and_share.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:modeling_app/MVC/view/ExportScreen.dart';
 import 'package:modeling_app/components/imageBottomSheet.dart';
@@ -11,7 +12,6 @@ import 'package:modeling_app/constant/navigation.dart';
 import 'package:modeling_app/constant/theme.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 import 'package:modeling_app/MVC/controller/maincontroller.dart';
-
 
 class modelViewerScreen extends StatelessWidget {
   modelViewerScreen({
@@ -41,51 +41,51 @@ class modelViewerScreen extends StatelessWidget {
                   child: CircleAvatar(
                     radius: 25.sp,
                     backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-                    child: Icon(
-                      Icons.image,
+                    child: SvgPicture.asset(
+                      'assets/icons/Gallery.svg',
                       color: Colors.black,
-                      size: 20.sp,
+                      height: 20.sp,
                     ),
                   ),
                 )),
-      //       Positioned(
-      //           top: 30.sp,
-      //           right: 80.sp,
-      //           child: SpringWidget(
-      //             onTap: () async {
-      // //                CaptureAndShare.shareIt(
-      // //   sizeWidth: 300,
-      // //   sizeHeight: 300,
-      // //   xMode: 'center',
-      // //   yMode: 'center',
-      // // );
-      //               // var container = Container(
-      //               //     child: modelviewer(
-      //               //         controllersProvider: controllersProvider,
-      //               //         Model: Model));
+            //       Positioned(
+            //           top: 30.sp,
+            //           right: 80.sp,
+            //           child: SpringWidget(
+            //             onTap: () async {
+            // //                CaptureAndShare.shareIt(
+            // //   sizeWidth: 300,
+            // //   sizeHeight: 300,
+            // //   xMode: 'center',
+            // //   yMode: 'center',
+            // // );
+            //               // var container = Container(
+            //               //     child: modelviewer(
+            //               //         controllersProvider: controllersProvider,
+            //               //         Model: Model));
 
-      //               // String? path = await NativeScreenshot.takeScreenshot();
-      //               // Navigation.getInstance.RightToLeft_PageNavigation(
-      //               //     context, ExportScreen(capturedImage: path));
-      //               // await screenshotController
-      //               //     .captureFromWidget(
-      //               //         InheritedTheme.captureAll(
-      //               //             context, Material(child: container)),
-      //               //         delay: Duration(seconds: 1))
-      //               //     .then((capturedImage) {
-      //               //   ShowCapturedWidget(context, capturedImage);
-      //               // });
-      //             },
-      //             child: CircleAvatar(
-      //               radius: 25.sp,
-      //               backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      //               child: Icon(
-      //                 Icons.person,
-      //                 color: Colors.black,
-      //                 size: 20.sp,
-      //               ),
-      //             ),
-      //           )),
+            //               // String? path = await NativeScreenshot.takeScreenshot();
+            //               // Navigation.getInstance.RightToLeft_PageNavigation(
+            //               //     context, ExportScreen(capturedImage: path));
+            //               // await screenshotController
+            //               //     .captureFromWidget(
+            //               //         InheritedTheme.captureAll(
+            //               //             context, Material(child: container)),
+            //               //         delay: Duration(seconds: 1))
+            //               //     .then((capturedImage) {
+            //               //   ShowCapturedWidget(context, capturedImage);
+            //               // });
+            //             },
+            //             child: CircleAvatar(
+            //               radius: 25.sp,
+            //               backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+            //               child: Icon(
+            //                 Icons.person,
+            //                 color: Colors.black,
+            //                 size: 20.sp,
+            //               ),
+            //             ),
+            //           )),
           ],
         ),
       );
@@ -136,7 +136,7 @@ class modelviewer extends StatelessWidget {
           src: 'assets/images/${Model}',
           alt: "A 3D model of an astronaut",
           ar: false,
-          autoRotate: true,
+          autoRotate: false,
           cameraControls: true,
         ),
       ],
